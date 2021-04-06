@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const authService = require("../service/auth-service");
+const userService = require("../service/user-service");
 
 const authMiddleware = function (req, res, next) {
   console.log(req.headers);
@@ -23,7 +24,7 @@ router.post("/login", async function (req, res) {
 });
 
 // middleware that is specific to this router
-// router.use(authMiddleware);
+router.use(authMiddleware);
 
 router.post("/user", function (req, res) {
   return res.json({ status: "api ok", req });
