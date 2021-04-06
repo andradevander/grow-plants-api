@@ -7,8 +7,13 @@ class UserService {
       .where("password", credentials.password);
   }
   async getUserById(id) {
-    return knex("users").first(id);
+    return knex("users").where("id", id).select();
   }
+
+  async getAllUsers() {
+    return knex("users").select();
+  }
+
   async createUser(newUserData) {
     return knex("users").insert({
       first_name: newUserData.first_name,

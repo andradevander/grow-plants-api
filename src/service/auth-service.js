@@ -13,8 +13,5 @@ class AuthService {
 
     return jwt.sign(user[0], "1a2b3c4d5e");
   }
-
-  async getUserById() {}
-  async createUser(newUserData) {}
 }
 module.exports = new AuthService();

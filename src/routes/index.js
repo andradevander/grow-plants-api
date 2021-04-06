@@ -2,19 +2,12 @@ const express = require("express");
 const router = express.Router();
 const authService = require("../service/auth-service");
 const userService = require("../service/user-service");
+const authMiddleware = require("../middlewares/authMiddleware");
 
-const authMiddleware = function (req, res, next) {
-  console.log(req.headers);
-  // return res.sendStatus(403);
-  next();
-};
-
-// define the home page route
 router.get("/", function (_req, res) {
-  return res.json({ status: "api ok" });
+  return res.json({ status: "api running ok!" });
 });
 
-// define the home page route
 router.post("/login", async function (req, res) {
   const token = await authService.login(req.body);
   if (!token) {
@@ -23,17 +16,23 @@ router.post("/login", async function (req, res) {
   return res.json({ token });
 });
 
-// middleware that is specific to this router
-router.use(authMiddleware);
-
-router.post("/user", function (req, res) {
-  return res.json({ status: "api ok", req });
+router.post("/user", authMiddleware, async function (req, res) {
+  try {
+    const createdUser = await userService.createUser(req.body);
+    return res.json({ createdUser });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
 });
 
-// define the about route
-router.get("/about", function (req, res) {
-  var decoded = jwt.verify(token, "shhhhh");
-  res.json({ about: "About birds" });
+router.get("/user/all", authMiddleware, async function (_req, res) {
+  const user = await userService.getAllUsers();
+  return res.json(user);
+});
+
+router.get("/user/:id", authMiddleware, async function (req, res) {
+  const user = await userService.getUserById(req.params.id);
+  return res.json(user);
 });
 
 module.exports = router;
