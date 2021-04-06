@@ -1,0 +1,32 @@
+{
+  "name": "grow-plants-api",
+  "version": "1.0.0",
+  "description": "[MOCK] A grow plant system with iot integratio",
+  "main": "src/server.js",
+  "scripts": {
+    "start:dev": "nodemon src/server",
+    "start": "node src/server",
+    "database:create": "node ./configs/startDb.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandrebsilva/grow-plants-api.git"
+  },
+  "author": "Alexandre Borges",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexandrebsilva/grow-plants-api/issues"
+  },
+  "homepage": "https://github.com/alexandrebsilva/grow-plants-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.4",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "nodemon": "^2.0.7"
+  }
+}
