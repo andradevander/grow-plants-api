@@ -31,15 +31,6 @@ module.exports = async function (knex) {
         user_id: 1,
         created_at: new Date(),
       },
-      {
-        name: "little plant 3",
-        moisture: 25,
-        soil_temperature: 35,
-        fertilized_at: new Date(),
-        status: "GOOD",
-        user_id: 1,
-        created_at: new Date(),
-      },
     ]);
   } catch (error) {
     console.log(error.message);
