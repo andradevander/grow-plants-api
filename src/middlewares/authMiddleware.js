@@ -7,6 +7,6 @@ module.exports = function (req, res, next) {
     res.locals.loggedUser = jwt.verify(token, "1a2b3c4d5e");
     next();
   } catch (error) {
-    return res.sendStatus(403);
+    return res.sendStatus(401);
   }
 };

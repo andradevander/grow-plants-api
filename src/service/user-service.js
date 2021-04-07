@@ -14,6 +14,14 @@ class UserService {
     return knex("users").select();
   }
 
+  async deletePlantById(id) {
+    await knex("plants").where("id", id).del();
+  }
+
+  async deleteUserById(id) {
+    await knex("users").where("id", id).del();
+  }
+
   async createUser(newUserData) {
     return knex("users").insert({
       first_name: newUserData.first_name,
