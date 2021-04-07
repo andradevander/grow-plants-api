@@ -2,7 +2,7 @@ const knex = require("../../configs/knex");
 
 class PlantService {
   async createPlant(newPlant) {
-    await knex.insert({
+    return knex("plants").insert({
       name: newPlant.name,
       moisture: newPlant.moisture,
       soil_temperature: newPlant.soil_temperature,

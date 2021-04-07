@@ -17,6 +17,7 @@ module.exports = async function (knex) {
         table.increments("id").primary().notNullable();
         table.string("name");
         table.string("moisture");
+        table.string("status");
         table.integer("soil_temperature");
         table.datetime("fertilized_at");
         table.datetime("created_at").notNullable();

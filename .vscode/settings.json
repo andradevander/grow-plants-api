@@ -1,11 +1,4 @@
 {
-    "sqltools.connections": [
-        {
-            "previewLimit": 50,
-            "driver": "SQLite",
-            "name": "conn",
-            "database": "${workspaceFolder:grow-plants-api}/db.sqlite"
-        }
-    ],
+    "sqltools.connections": [],
     "sqltools.useNodeRuntime": true
 }

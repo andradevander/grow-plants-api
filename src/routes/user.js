@@ -13,6 +13,16 @@ router.post("/", authMiddleware, async function (req, res) {
   }
 });
 
+router.patch("/:id", authMiddleware, async function (req, res) {
+  try {
+    const updatedUser = await userService.updateUser(req.params.id, req.body);
+
+    return res.json({ updatedUser });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+});
+
 router.get("/all", authMiddleware, async function (_req, res) {
   const user = await userService.getAllUsers();
   return res.json(user);
@@ -24,8 +34,8 @@ router.delete("/:id", authMiddleware, async function (req, res) {
 });
 
 router.get("/:id", authMiddleware, async function (req, res) {
-  const user = await userService.getUserById(req.params.id);
-  return res.json(user);
+  const users = await userService.getUserById(req.params.id);
+  return res.json(users[0]);
 });
 
 module.exports = router;

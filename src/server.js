@@ -13,8 +13,13 @@ app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
 app.use("/plant", plantRoutes);
 
-app.use("*", (_req, res) => {
-  return res.status(404);
+app.use(function (_req, res, _next) {
+  res.status(404).send("Sorry can't find that!");
+});
+
+app.use(function (err, _req, res, _next) {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
 });
 
 app.listen(port, () => {

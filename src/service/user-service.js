@@ -22,6 +22,10 @@ class UserService {
     await knex("users").where("id", id).del();
   }
 
+  async updateUser(id, newUserData) {
+    return knex("users").where("id", id).update(newUserData);
+  }
+
   async createUser(newUserData) {
     return knex("users").insert({
       first_name: newUserData.first_name,
