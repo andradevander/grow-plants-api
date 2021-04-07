@@ -24,13 +24,13 @@ router.patch("/:id", authMiddleware, async function (req, res) {
 });
 
 router.get("/all", authMiddleware, async function (_req, res) {
-  const user = await userService.getAllUsers();
-  return res.json(user);
+  const users = await userService.getAllUsers();
+  return res.json(users);
 });
 
 router.delete("/:id", authMiddleware, async function (req, res) {
   await userService.deleteUserById(req.params.id);
-  return res.json({ user });
+  return res.json({ message: "User deleted successfully" });
 });
 
 router.get("/:id", authMiddleware, async function (req, res) {
