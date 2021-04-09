@@ -25,3 +25,4 @@ npm run start:dev
 - Create rules and policies for user roles
 - Create new rules for filtering one-result queries (eg: getPlantById())
 - Create models to save history of plants data
+- Create rules for CORS
