@@ -12,6 +12,13 @@ router.post("/", authMiddleware, async function (req, res) {
   }
 });
 
+router.get("/", authMiddleware, async function (req, res) {
+  const { id } = res.locals.loggedUser;
+
+  const users = await userService.getUserById(req.params.id);
+  return res.json(users[0]);
+});
+
 router.patch("/:id", authMiddleware, async function (req, res) {
   try {
     const updatedUser = await userService.updateUser(req.params.id, req.body);

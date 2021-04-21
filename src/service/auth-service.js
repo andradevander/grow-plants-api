@@ -3,6 +3,7 @@ const userService = require("./user-service");
 
 class AuthService {
   async login(credentials) {
+    console.log(credentials);
     const user = await userService.getUserByCredentials(credentials);
 
     if (!user.length) {
