@@ -15,7 +15,7 @@ router.post("/", authMiddleware, async function (req, res) {
 router.get("/", authMiddleware, async function (req, res) {
   const { id } = res.locals.loggedUser;
 
-  const users = await userService.getUserById(req.params.id);
+  const users = await userService.getUserById(id);
   return res.json(users[0]);
 });
 
